@@ -1,0 +1,26 @@
+package com.bruno.service;
+
+import java.util.Optional;
+
+import com.bruno.domain.Pedido;
+import com.bruno.repositories.PedidoRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import exception.ObjectNotFoundException;
+
+@Service
+public class PedidoService {
+
+    @Autowired
+    private PedidoRepository repo;
+
+    public Pedido find(Integer id) {
+        Optional<Pedido> obj = repo.findById(id);
+       return obj.orElseThrow(() -> new ObjectNotFoundException(
+        "Objeto não encontrado! Id: " + id + ", Tipo: " + Pedido.class.getName()));
+       } 
+       
+   
+}
