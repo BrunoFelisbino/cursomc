@@ -22,6 +22,10 @@ private ItemPedidoPK id = new ItemPedidoPK();
     public ItemPedido() {
     }
 
+public double getSubTotal() {
+    return (preco - desconto) * quantidade ;
+}
+
     public ItemPedido(Pedido pedido , Produto produto, Double desconto, Integer quantidade, Double preco) {
        id.setPedido(pedido);
        id.setProduto(produto);
